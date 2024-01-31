@@ -1,0 +1,6 @@
+apiVersion: v1
+data:
+  config.yaml: "log:\r\n  level: debug\r\n  outputPaths:\r\n    - stdout"
+kind: ConfigMap
+metadata:
+  name: http-server-config

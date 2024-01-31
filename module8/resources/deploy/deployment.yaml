@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: http-server
+  name: http-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: http-server
+  template:
+    metadata:
+      labels:
+        app: http-server
+    spec:
+      containers:
+      - image: localhost:5000/http_server:v8
+        name: http-server
+        command: ["/bin/httpServer"]
+        args: ["--config", "/etc/httpServer/config.yaml"]
+        volumeMounts:
+          - name: http-server-config
+            mountPath: /etc/httpServer
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+        livenessProbe:
+          tcpSocket:
+            port: 80
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 80
+        lifecycle:
+          preStop:
+            httpGet:
+              path: /shutdown
+              port: 80
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - http-server
+              topologyKey: kubernetes.io/hostname
+      volumes:
+        - name: http-server-config
+          configMap:
+            name: http-server-config
