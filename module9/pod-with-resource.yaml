@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: test
+  name: test
+spec:
+  containers:
+    - image: nginx:1.25
+      name: test
+      resources:
+        requests:
+          cpu: 3000m
+
+  nodeName: k8s-master
