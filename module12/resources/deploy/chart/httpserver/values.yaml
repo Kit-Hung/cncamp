@@ -1,0 +1,11 @@
+replicaCount: 1
+
+image:
+  tag: "v12"
+
+proxy:
+  enabled: true
+
+jaeger:
+  enabled: true
+  endpointUrl: jaeger-collector.istio-system.svc.cluster.local:80

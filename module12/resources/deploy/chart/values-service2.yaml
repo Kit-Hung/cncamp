@@ -1,0 +1,9 @@
+config:
+  name: "service2"
+
+proxy:
+  enabled: false
+  name: "service2"
+
+service:
+  name: "service2"

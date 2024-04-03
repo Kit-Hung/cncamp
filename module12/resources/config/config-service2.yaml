@@ -1,0 +1,14 @@
+log:
+  level: debug
+  outputPaths:
+    - stdout
+
+proxy:
+  enabled: false
+
+service:
+  name: service2
+
+jaeger:
+  enabled: true
+  endpointUrl: jaeger-collector.istio-system.svc.cluster.local:14268

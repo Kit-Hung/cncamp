@@ -10,5 +10,5 @@
 |     8     | 应用优雅启动、终止、高可用                        | [module8](module8)   |
 |     9     | 用 kubespray 、 cluster api 搭建集群       | [module9](module9)   |
 |    10     | 部署 Harbor、为 http-server 增加监控采集       | [module10](module10) |
-|    12     | xx                                   | [module12](module12) |
-|    15     | xx                                   | [module15](module15) |
+|    12     | 通过 istio gateway 发布服务                | [module12](module12) |
+|    15     | 部署 bookinfo 及总结                      | [module15](module15) |

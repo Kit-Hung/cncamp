@@ -1,0 +1,17 @@
+log:
+  level: debug
+  outputPaths:
+    - stdout
+
+proxy:
+  enabled: true
+  url: service2.default.svc.cluster.local
+  port: 80
+  protocol: http
+
+service:
+  name: service1
+
+jaeger:
+  enabled: true
+  endpointUrl: jaeger-collector.istio-system.svc.cluster.local:14268
